@@ -1,0 +1,28 @@
+<div id="teclado">
+    <div id="resultado"><h1 id="textoResultado"> {{ textoConta }} </h1> </div>
+    <button (click)="montarExpressao(1)" class="btn btn-outline-light">1</button>
+    <button (click)="montarExpressao(2)" class="btn btn-outline-light" value="2">2</button>
+    <button (click)="montarExpressao(3)" class="btn btn-outline-light" value="3">3</button>
+    <button (click)="montarExpressao('+')" class="btn btn-outline-light" value="adicao">+</button>
+
+
+    <br>
+    <button (click)="montarExpressao(4)" class="btn btn-outline-light" value="4">4</button>
+    <button (click)="montarExpressao(5)" class="btn btn-outline-light" value="5">5</button>
+    <button (click)="montarExpressao(6)" class="btn btn-outline-light" value="6">6</button>
+    <button (click)="montarExpressao('-')" class="btn btn-outline-light" value="subtracao">-</button>
+
+    <br>
+    <button (click)="montarExpressao(7)" class="btn btn-outline-light" value="7">7</button>
+    <button (click)="montarExpressao(8)" class="btn btn-outline-light" value="8">8</button>
+    <button (click)="montarExpressao(9)" class="btn btn-outline-light" value="9">9</button>
+    <button (click)="montarExpressao('*')" class="btn btn-outline-light" value="multiplicacao">x</button>
+
+    <br>
+    <button (click)="textoConta = ''" class="btn btn-outline-light" value="C">C</button>
+    <button (click)="montarExpressao(0)" class="btn btn-outline-light" value="0">0</button>
+    <button (click)="calcularResultado()" class="btn btn-outline-light" value="0">=</button>
+    <button (click)="montarExpressao('/')" class="btn btn-outline-light" value="divisao">%</button>
+
+    
+</div>
