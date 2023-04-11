@@ -28,48 +28,30 @@ export class TecladoComponent{
   
   public teste: BotaoCalculadora = new BotaoCalculadora('+','+');
 
-  novaExpressao(valor : any, sinal: boolean){
+  public novaExpressao(valor : any, sinal: boolean): void {
 
     let ultimoCaractere: any = (this.textoConta).split("")[(this.textoConta).length-1];
     
     if(valor == 'C'){
       this.textoConta = '';
     }
-    else if(valor == '='){
+    else if(valor == '='){ 
       this.resultado = eval(this.textoConta);
       this.textoConta = this.resultado.toString();
     }
-    else if(sinal == true){
-
-      console.log('ultimo caractere:', ultimoCaractere);
-
-      if(this.textoConta == '' || this.operacoes.some((operacao) => this.temElemento(operacao, ultimoCaractere))){
-        console.log('Você não pode inserir um sinal agora');
-      }
-      else{
+    else if(this.verificarElementoSinalOuValorZero(sinal, valor, ultimoCaractere)){
         this.textoConta = this.textoConta+valor;
-      }
     }
-
-    //tratando 0 esquerda
-    else if(valor == '0'){
-      console.log('ultimo caractere:', ultimoCaractere);
-
-
-      if(this.textoConta == '' || this.operacoes.some((operacao) => this.temElemento(operacao, ultimoCaractere))){
-        console.log('Você não pode inserir um 0 à esquerda');
-      }
-      else{
-        this.textoConta = this.textoConta+valor;
-      }
-    }
-    //tratando 0 esquerda
     else{
       this.textoConta = this.textoConta+valor;
     }
   }
-  private temElemento(operacao: BotaoCalculadora, ultimoCaractere: string){
+  private temElemento(operacao: BotaoCalculadora, ultimoCaractere: string): boolean {
     return operacao.valor === ultimoCaractere;
+  }
+
+  private verificarElementoSinalOuValorZero(sinal: boolean, valor: any, ultimoCaractere: string) : boolean {
+    return (sinal == true || valor == 0) && (this.textoConta !== '' && !this.operacoes.some((operacao) => this.temElemento(operacao, ultimoCaractere)));
   }
 
 }
